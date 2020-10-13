@@ -915,8 +915,8 @@ const ghosts = [
 // Draw my ghosts onto my grid
 
 ghosts.forEach(ghost => {
-  squares[ghost.startIndex].classList.add(ghost.className)
-  squares[ghost.startIndex].classList.add('ghost')
+  squares[ghost.currenIndex].classList.add(ghost.className)
+  squares[ghost.currenIndex].classList.add('ghost')
 })
 
 // ?ove the ghost
@@ -934,10 +934,12 @@ function moveGhost (ghost) {
       !squares[ghost.currenIndex + direction].classList.contains('ghost')
     ) {
       squares[ghost.currenIndex].classList.remove(ghost.className)
+      squares[ghost.currenIndex].classList.remove('ghost')
 
       ghost.currenIndex += direction
 
       squares[ghost.currenIndex].classList.add(ghost.className)
+      squares[ghost.currenIndex].classList.add('ghost')
     } else direction = directions[Math.floor(Math.random() * directions.length)]
   }, ghost.speed)
 }
